@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4338ca"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b" stop-opacity=".3"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="96" fill="url(#sky)"/>
+  <!-- Stars -->
+  <circle cx="80" cy="80" r="2.5" fill="#e0e7ff" opacity=".7"/>
+  <circle cx="430" cy="60" r="2" fill="#e0e7ff" opacity=".6"/>
+  <circle cx="150" cy="55" r="1.8" fill="#e0e7ff" opacity=".5"/>
+  <circle cx="350" cy="100" r="2.2" fill="#e0e7ff" opacity=".6"/>
+  <circle cx="70" cy="140" r="1.5" fill="#e0e7ff" opacity=".4"/>
+  <circle cx="440" cy="150" r="1.8" fill="#e0e7ff" opacity=".5"/>
+  <!-- Crescent moon -->
+  <circle cx="410" cy="95" r="18" fill="#fde68a" opacity=".9"/>
+  <circle cx="420" cy="88" r="16" fill="#5550d0"/>
+  <!-- Water reflection -->
+  <rect x="40" y="370" width="432" height="102" rx="8" fill="#3730a3" opacity=".4"/>
+  <line x1="60" y1="390" x2="140" y2="390" stroke="#818cf8" stroke-width="1.5" opacity=".3" stroke-linecap="round"/>
+  <line x1="180" y1="405" x2="280" y2="405" stroke="#818cf8" stroke-width="1.5" opacity=".25" stroke-linecap="round"/>
+  <line x1="300" y1="420" x2="380" y2="420" stroke="#818cf8" stroke-width="1.5" opacity=".2" stroke-linecap="round"/>
+  <line x1="80" y1="435" x2="200" y2="435" stroke="#818cf8" stroke-width="1" opacity=".15" stroke-linecap="round"/>
+  <line x1="340" y1="445" x2="440" y2="445" stroke="#818cf8" stroke-width="1" opacity=".15" stroke-linecap="round"/>
+  <!-- Skyline base -->
+  <rect x="40" y="340" width="432" height="32" rx="4" fill="#e0e7ff" opacity=".95"/>
+  <!-- Hagia Sophia / Main Mosque (center) -->
+  <!-- Main dome -->
+  <ellipse cx="256" cy="230" rx="80" ry="65" fill="#e0e7ff"/>
+  <!-- Dome shadow -->
+  <ellipse cx="256" cy="230" rx="80" ry="65" fill="#c7d2fe" opacity=".5" clip-path="inset(50% 0 0 0)"/>
+  <!-- Dome base / drum -->
+  <rect x="176" y="270" width="160" height="72" fill="#e0e7ff"/>
+  <!-- Dome windows -->
+  <rect x="220" y="280" width="6" height="16" rx="3" fill="#a5b4fc" opacity=".6"/>
+  <rect x="238" y="280" width="6" height="16" rx="3" fill="#a5b4fc" opacity=".6"/>
+  <rect x="256" y="276" width="6" height="20" rx="3" fill="#a5b4fc" opacity=".6"/>
+  <rect x="274" y="280" width="6" height="16" rx="3" fill="#a5b4fc" opacity=".6"/>
+  <rect x="292" y="280" width="6" height="16" rx="3" fill="#a5b4fc" opacity=".6"/>
+  <!-- Dome finial (alem) -->
+  <circle cx="256" cy="168" r="5" fill="#fde68a"/>
+  <line x1="256" y1="173" x2="256" y2="185" stroke="#fde68a" stroke-width="2.5"/>
+  <!-- Semi-domes (left and right) -->
+  <ellipse cx="190" cy="285" rx="40" ry="30" fill="#ddd6fe"/>
+  <ellipse cx="322" cy="285" rx="40" ry="30" fill="#ddd6fe"/>
+  <!-- Left minaret -->
+  <rect x="126" y="200" width="14" height="142" rx="4" fill="#e0e7ff"/>
+  <rect x="122" y="195" width="22" height="10" rx="3" fill="#c7d2fe"/>
+  <polygon points="133,200 126,210 140,210" fill="#ddd6fe"/>
+  <circle cx="133" cy="195" r="3.5" fill="#fde68a"/>
+  <line x1="133" y1="199" x2="133" y2="207" stroke="#fde68a" stroke-width="1.5"/>
+  <!-- Minaret balcony -->
+  <rect x="120" y="250" width="26" height="4" rx="2" fill="#c7d2fe"/>
+  <!-- Right minaret -->
+  <rect x="366" y="200" width="14" height="142" rx="4" fill="#e0e7ff"/>
+  <rect x="362" y="195" width="22" height="10" rx="3" fill="#c7d2fe"/>
+  <polygon points="373,200 366,210 380,210" fill="#ddd6fe"/>
+  <circle cx="373" cy="195" r="3.5" fill="#fde68a"/>
+  <line x1="373" y1="199" x2="373" y2="207" stroke="#fde68a" stroke-width="1.5"/>
+  <!-- Minaret balcony -->
+  <rect x="360" y="250" width="26" height="4" rx="2" fill="#c7d2fe"/>
+  <!-- Galata Tower (left side) -->
+  <rect x="62" y="240" width="28" height="102" rx="3" fill="#ddd6fe"/>
+  <rect x="56" y="236" width="40" height="10" rx="3" fill="#c7d2fe"/>
+  <polygon points="76,240 62,250 90,250" fill="#e0e7ff"/>
+  <circle cx="76" cy="233" r="4" fill="#fde68a"/>
+  <line x1="76" y1="237" x2="76" y2="246" stroke="#fde68a" stroke-width="2"/>
+  <!-- Galata windows -->
+  <rect x="71" y="260" width="10" height="8" rx="4" fill="#a5b4fc" opacity=".5"/>
+  <rect x="71" y="280" width="10" height="8" rx="4" fill="#a5b4fc" opacity=".5"/>
+  <!-- Small mosque (right side) -->
+  <ellipse cx="430" cy="295" rx="35" ry="28" fill="#ddd6fe"/>
+  <rect x="395" y="310" width="70" height="32" fill="#ddd6fe"/>
+  <circle cx="430" cy="270" r="3" fill="#fde68a"/>
+  <line x1="430" y1="273" x2="430" y2="280" stroke="#fde68a" stroke-width="1.5"/>
+  <!-- Small minaret -->
+  <rect x="460" y="270" width="8" height="72" rx="2" fill="#e0e7ff"/>
+  <circle cx="464" cy="268" r="2.5" fill="#fde68a"/>
+  <!-- Buildings fill (left) -->
+  <rect x="40" y="310" width="30" height="32" fill="#c7d2fe" opacity=".7"/>
+  <rect x="94" y="300" width="24" height="42" fill="#c7d2fe" opacity=".6"/>
+  <!-- Buildings fill (right) -->
+  <rect x="385" y="315" width="20" height="27" fill="#c7d2fe" opacity=".5"/>
+  <!-- Text: IST -->
+  <text x="256" y="470" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="42" font-weight="800" fill="#e0e7ff" letter-spacing="8" opacity=".85">İSTANBUL</text>
+</svg>

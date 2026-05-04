@@ -1,0 +1,32 @@
+{
+  "name": "Istanbul Itinerary — May 10–17, 2026",
+  "short_name": "Istanbul",
+  "description": "Offline Istanbul travel guide with interactive map, audio guides, and daily itinerary",
+  "start_url": "./istanbul-itinerary.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f1f5f9",
+  "theme_color": "#4f46e5",
+  "categories": ["travel", "navigation"],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
