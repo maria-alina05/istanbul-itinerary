@@ -200,6 +200,36 @@
         .info-card p, .info-card li { font-size: .85rem; color: var(--muted); }
         .info-card ul { padding-left: 1.1rem; }
 
+        /* Food Checklist */
+        .food-checklist {
+            display: grid; grid-template-columns: 1fr; gap: .4rem;
+            padding: 0; list-style: none;
+        }
+        @media (min-width: 600px) { .food-checklist { grid-template-columns: 1fr 1fr; } }
+        .food-checklist li {
+            display: flex; align-items: flex-start; gap: .5rem;
+            padding: .5rem .6rem; border-radius: 8px; font-size: .85rem;
+            background: var(--card); border: 1px solid var(--border);
+            cursor: pointer; transition: all .15s; user-select: none;
+        }
+        .food-checklist li:active { transform: scale(.97); }
+        .food-checklist li.checked {
+            background: #f0fdf4; border-color: #86efac;
+            text-decoration: line-through; color: var(--muted);
+        }
+        .food-check {
+            width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+            border: 2px solid #cbd5e1; display: flex; align-items: center;
+            justify-content: center; font-size: .7rem; margin-top: 1px;
+            transition: all .15s;
+        }
+        .food-checklist li.checked .food-check {
+            background: #22c55e; border-color: #22c55e; color: #fff;
+        }
+        .food-name { font-weight: 600; color: var(--text); }
+        .food-checklist li.checked .food-name { color: var(--muted); }
+        .food-desc { font-size: .78rem; color: var(--muted); margin-top: .1rem; }
+
         /* Plan B / Backup */
         .backup-box {
             margin-top: 1rem; border: 1px dashed #cbd5e1; border-radius: var(--radius);
@@ -523,6 +553,91 @@
                 <p><strong>Observe:</strong> Magnificent 19th-century <strong>wooden Ottoman mansions</strong> (yalıs) with ornate balconies. Many are slowly crumbling — which, as someone who understands entropy, I find not "hauntingly beautiful" but rather "a predictable consequence of the Second Law of Thermodynamics."</p>
             </div>
         </div>
+
+        <h3 style="margin:1.5rem 0 .5rem;color:var(--fg)">🍽️ Istanbul Must-Eat Checklist (Tap When Consumed)</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:.8rem">"I've catalogued the essential Istanbul foods. This is not a suggestion list — it's a curriculum. Skipping items is academically inadvisable." — Dr. Cooper</p>
+        <ul class="food-checklist" id="foodChecklist">
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🥯 Simit</div><div class="food-desc">Sesame-crusted bread ring — Istanbul's street breakfast. Eat with çay. Available every 12 meters.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🐟 Balık Ekmek</div><div class="food-desc">Grilled fish sandwich — mackerel in bread with onions, lettuce & lemon. Best from the boats at Eminönü.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🫓 Lahmacun</div><div class="food-desc">Paper-thin crispy flatbread with spiced minced meat. Roll it up with parsley, lemon & onion. Not a pizza. Do not call it pizza.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🥟 Mantı</div><div class="food-desc">Turkish dumplings with yogurt & garlic sauce, drizzled with spiced butter. The smaller the dumpling, the higher the skill.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🧆 İskender Kebab</div><div class="food-desc">Döner slices over pide bread, drenched in tomato sauce & melted butter, with yogurt on the side. Caloric density: alarming. Taste: worth it.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🍖 Kokoreç</div><div class="food-desc">Spiced lamb intestines wrapped around a spit, grilled & chopped into bread. Sounds terrifying. Tastes extraordinary. A courage test.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🦪 Midye Dolma</div><div class="food-desc">Stuffed mussels with spiced rice, sold from street carts. Squeeze lemon on top. Eat 5–10. Minimum.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🍲 Mercimek Çorbası</div><div class="food-desc">Red lentil soup — served everywhere, always good, always cheap. Squeeze lemon into it. The universal Turkish starter.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🫘 Kuru Fasulye</div><div class="food-desc">White bean stew with tomato sauce, served with pilav (rice). Classic lokanta comfort food. Ask for turşu (pickles) on the side.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🍞 Pide</div><div class="food-desc">Boat-shaped Turkish flatbread with cheese, meat, or egg fillings. Often called "Turkish pizza" — but it predates pizza by centuries.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">☕ Türk Kahvesi</div><div class="food-desc">Turkish coffee — unfiltered, thick, tiny cup. Order "orta" (medium sweet). Flip the cup for fortune reading. UNESCO heritage since 2013.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🍵 Çay</div><div class="food-desc">Turkish black tea in tulip-shaped glasses. Offered everywhere, all the time. Refusing is borderline rude. Two sugar cubes is standard.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🧋 Ayran</div><div class="food-desc">Cold salted yogurt drink. The perfect kebab companion. Sounds odd, tastes essential. Available literally everywhere.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🥬 Şalgam</div><div class="food-desc">Fermented purple turnip juice — sour, salty, slightly spicy. Paired with fish sandwiches. You'll either love it or question my judgment.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🍯 Baklava</div><div class="food-desc">Layers of phyllo, crushed pistachios, syrup. The pistachio version (fıstıklı) is the gold standard. Accept no walnut substitutes.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🍨 Künefe</div><div class="food-desc">Shredded kadayıf pastry with melted cheese inside, soaked in syrup, served hot. Sweet-salty perfection.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🧁 Tavuk Göğsü</div><div class="food-desc">Chicken breast pudding — yes, a dessert made with shredded chicken. Sounds implausible. Tastes like creamy milk pudding. An Ottoman palace recipe.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🍦 Dondurma</div><div class="food-desc">Stretchy Turkish ice cream made with salep & mastic resin. Resists melting. Vendors will tease you with cone tricks.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🍬 Lokum</div><div class="food-desc">Turkish delight — rose, pistachio, or pomegranate. Buy from a proper shop, not tourist traps. Texture should be soft, not rubbery.</div></div>
+            </li>
+            <li onclick="this.classList.toggle('checked');saveFoodProgress()">
+                <div class="food-check">✓</div>
+                <div><div class="food-name">🍮 Kazandibi</div><div class="food-desc">Caramelized milk pudding with a burnt bottom. Creamy, smoky, uniquely Ottoman. The deliberate burning is the technique.</div></div>
+            </li>
+        </ul>
 
         <div class="alert alert-info">
             <h3>💡 Schedule Strategy (a.k.a. "The Cooper Algorithm")</h3>
@@ -2823,6 +2938,23 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 window.addEventListener('appinstalled', () => { installBtn.style.display = 'none'; });
+
+// ==================== FOOD CHECKLIST PERSISTENCE ====================
+function saveFoodProgress() {
+    const items = document.querySelectorAll('#foodChecklist li');
+    const state = Array.from(items).map(li => li.classList.contains('checked'));
+    localStorage.setItem('istanbul-food-checklist', JSON.stringify(state));
+}
+function loadFoodProgress() {
+    const saved = localStorage.getItem('istanbul-food-checklist');
+    if (!saved) return;
+    try {
+        const state = JSON.parse(saved);
+        const items = document.querySelectorAll('#foodChecklist li');
+        state.forEach((checked, i) => { if (checked && items[i]) items[i].classList.add('checked'); });
+    } catch(e) {}
+}
+loadFoodProgress();
 </script>
 
 </body>
