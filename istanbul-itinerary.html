@@ -446,25 +446,37 @@
         }
 
         /* ---- TICKET CARDS ---- */
-        .tickets-strip {
-            display: flex; gap: .6rem; overflow-x: auto; scroll-snap-type: x mandatory;
-            margin: .5rem 0 .8rem; padding: .3rem 0; -webkit-overflow-scrolling: touch;
+        .tickets-toggle {
+            margin: .4rem 0 .6rem;
         }
-        .tickets-strip::-webkit-scrollbar { height: 4px; }
+        .tickets-toggle summary {
+            display: inline-flex; align-items: center; gap: .3rem;
+            background: #292524; color: #fbbf24; font-size: .72rem; font-weight: 600;
+            padding: .3rem .7rem; border-radius: 20px; border: 1px solid #44403c;
+            cursor: pointer; list-style: none; user-select: none;
+            transition: background .15s;
+        }
+        .tickets-toggle summary::-webkit-details-marker { display: none; }
+        .tickets-toggle summary:hover { background: #3b3835; }
+        .tickets-toggle[open] summary { background: #451a03; border-color: #92400e; }
+        .tickets-strip {
+            display: flex; gap: .5rem; overflow-x: auto; scroll-snap-type: x mandatory;
+            margin: .4rem 0 0; padding: .3rem 0; -webkit-overflow-scrolling: touch;
+        }
+        .tickets-strip::-webkit-scrollbar { height: 3px; }
         .tickets-strip::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 2px; }
         .ticket-card {
-            flex: 0 0 auto; width: 160px; background: #1a1a1a; border: 2px solid #fbbf24;
-            border-radius: 14px; overflow: hidden; scroll-snap-align: start;
-            cursor: pointer; transition: transform .15s, box-shadow .15s;
+            flex: 0 0 auto; width: 120px; background: #1a1a1a; border: 1.5px solid #44403c;
+            border-radius: 10px; overflow: hidden; scroll-snap-align: start;
+            cursor: pointer; transition: transform .15s, border-color .15s;
         }
-        .ticket-card:active { transform: scale(0.97); }
-        .ticket-card img {
-            width: 100%; height: auto; display: block;
-        }
+        .ticket-card:active { transform: scale(0.96); }
+        .ticket-card:hover { border-color: #fbbf24; }
+        .ticket-card img { width: 100%; height: auto; display: block; }
         .ticket-card .ticket-label {
-            display: block; background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: #78350f; font-size: .65rem; font-weight: 700;
-            padding: .3rem .5rem; text-align: center; letter-spacing: .3px;
+            display: block; background: #292524; color: #d6d3d1;
+            font-size: .58rem; font-weight: 600;
+            padding: .25rem .4rem; text-align: center;
         }
         .tickets-summary {
             background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
@@ -715,16 +727,19 @@
             <div class="day-badge" style="background:var(--day0)">10</div>
             <div><h2>Arrival & Initial Reconnaissance</h2><div class="day-sub">Sunday, May 10 — Landing at 16:00 (Precisely)</div></div>
         </div>
-        <div class="tickets-strip">
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/flight-clj-ist-andrei.jpg" alt="Boarding Pass — Andrei" loading="lazy">
-                <div class="ticket-label">✈️ Andrei — 15A</div>
+        <details class="tickets-toggle">
+            <summary>✈️ Boarding Passes (2)</summary>
+            <div class="tickets-strip">
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/flight-clj-ist-andrei.jpg" alt="Boarding Pass — Andrei" loading="lazy">
+                    <div class="ticket-label">✈️ Andrei — 15A</div>
+                </div>
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/flight-clj-ist-maria.jpg" alt="Boarding Pass — Maria" loading="lazy">
+                    <div class="ticket-label">✈️ Maria — 15C</div>
+                </div>
             </div>
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/flight-clj-ist-maria.jpg" alt="Boarding Pass — Maria" loading="lazy">
-                <div class="ticket-label">✈️ Maria — 15C</div>
-            </div>
-        </div>
+        </details>
         <div class="timeline">
             <div class="tl-item">
                 <div class="tl-time">16:00 – 18:00</div>
@@ -759,24 +774,27 @@
             <h3>📌 Day Notes (Read This. It's Important.)</h3>
             <p>Dolmabahçe & Beylerbeyi are <strong>closed on Mondays</strong>, which is why my algorithm assigns Sultanahmet today. Topkapı opens at 9:00 — arrive at 8:45 to secure optimal positioning in the queue. Blue Mosque afternoon session opens at 14:00. I have timed every transition to the minute.</p>
         </div>
-        <div class="tickets-strip">
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/cistern-t1.jpg" alt="Cistern combo — Ticket 1" loading="lazy">
-                <div class="ticket-label">🕌 Cistern+Sophia — T1</div>
+        <details class="tickets-toggle">
+            <summary>🎫 Tickets (4)</summary>
+            <div class="tickets-strip">
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/cistern-t1.jpg" alt="Cistern combo — Ticket 1" loading="lazy">
+                    <div class="ticket-label">🕌 Cistern+Sophia — T1</div>
+                </div>
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/cistern-t2.jpg" alt="Cistern combo — Ticket 2" loading="lazy">
+                    <div class="ticket-label">🕌 Cistern+Sophia — T2</div>
+                </div>
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/topkapi-t1.jpg" alt="Topkapı Palace — Ticket 1" loading="lazy">
+                    <div class="ticket-label">👑 Topkapı — T1</div>
+                </div>
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/topkapi-t2.jpg" alt="Topkapı Palace — Ticket 2" loading="lazy">
+                    <div class="ticket-label">👑 Topkapı — T2</div>
+                </div>
             </div>
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/cistern-t2.jpg" alt="Cistern combo — Ticket 2" loading="lazy">
-                <div class="ticket-label">🕌 Cistern+Sophia — T2</div>
-            </div>
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/topkapi-t1.jpg" alt="Topkapı Palace — Ticket 1" loading="lazy">
-                <div class="ticket-label">👑 Topkapı — T1</div>
-            </div>
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/topkapi-t2.jpg" alt="Topkapı Palace — Ticket 2" loading="lazy">
-                <div class="ticket-label">👑 Topkapı — T2</div>
-            </div>
-        </div>
+        </details>
 
         <div class="timeline">
             <div class="tl-item">
@@ -1033,16 +1051,19 @@
             <h3>📌 Day Notes (Constraint-Based Scheduling)</h3>
             <p>Topkapı is <strong>closed on Tuesdays</strong> — which my algorithm exploits by scheduling the Asian side today. Beylerbeyi Palace is open. Take the ferry from Eminönü (use your Istanbulkart). We will be crossing from the European to the Asian tectonic plate. I find this geologically thrilling.</p>
         </div>
-        <div class="tickets-strip">
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/beylerbeyi-t1.jpg" alt="Beylerbeyi Palace — Ticket 1" loading="lazy">
-                <div class="ticket-label">👑 Beylerbeyi — T1</div>
+        <details class="tickets-toggle">
+            <summary>🎫 Tickets (2)</summary>
+            <div class="tickets-strip">
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/beylerbeyi-t1.jpg" alt="Beylerbeyi Palace — Ticket 1" loading="lazy">
+                    <div class="ticket-label">👑 Beylerbeyi — T1</div>
+                </div>
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/beylerbeyi-t2.jpg" alt="Beylerbeyi Palace — Ticket 2" loading="lazy">
+                    <div class="ticket-label">👑 Beylerbeyi — T2</div>
+                </div>
             </div>
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/beylerbeyi-t2.jpg" alt="Beylerbeyi Palace — Ticket 2" loading="lazy">
-                <div class="ticket-label">👑 Beylerbeyi — T2</div>
-            </div>
-        </div>
+        </details>
 
         <div class="timeline">
             <div class="tl-item">
@@ -1263,16 +1284,19 @@
             <h3>📌 Day Notes (I've Checked Everything Twice)</h3>
             <p>Dolmabahçe Palace is <strong>open today</strong> (closed Mondays only). I've timed Galata Tower for sunset (~20:00) because the photon scattering at low solar angles produces optimal atmospheric coloring. Yıldız Palace is closed on Wednesdays — another data point in the closure chaos matrix.</p>
         </div>
-        <div class="tickets-strip">
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/dolmabahce-t1.jpg" alt="Dolmabahçe Palace — Ticket 1" loading="lazy">
-                <div class="ticket-label">👑 Dolmabahçe — T1</div>
+        <details class="tickets-toggle">
+            <summary>🎫 Tickets (2)</summary>
+            <div class="tickets-strip">
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/dolmabahce-t1.jpg" alt="Dolmabahçe Palace — Ticket 1" loading="lazy">
+                    <div class="ticket-label">👑 Dolmabahçe — T1</div>
+                </div>
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/dolmabahce-t2.jpg" alt="Dolmabahçe Palace — Ticket 2" loading="lazy">
+                    <div class="ticket-label">👑 Dolmabahçe — T2</div>
+                </div>
             </div>
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/dolmabahce-t2.jpg" alt="Dolmabahçe Palace — Ticket 2" loading="lazy">
-                <div class="ticket-label">👑 Dolmabahçe — T2</div>
-            </div>
-        </div>
+        </details>
 
         <div class="timeline">
             <div class="tl-item">
@@ -1499,16 +1523,19 @@
             <div class="day-badge" style="background:var(--day4)">14</div>
             <div><h2>Markets, Archaeology & Byzantine Gems (My Second Favorite Day)</h2><div class="day-sub">Thursday, May 14 — Bazaars & Hidden Treasures</div></div>
         </div>
-        <div class="tickets-strip">
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/archaeology-t1.jpg" alt="Archaeological Museum — Ticket 1" loading="lazy">
-                <div class="ticket-label">🏛️ Archaeology — T1</div>
+        <details class="tickets-toggle">
+            <summary>🎫 Tickets (2)</summary>
+            <div class="tickets-strip">
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/archaeology-t1.jpg" alt="Archaeological Museum — Ticket 1" loading="lazy">
+                    <div class="ticket-label">🏛️ Archaeology — T1</div>
+                </div>
+                <div class="ticket-card" onclick="openTicket(this)">
+                    <img src="tickets/archaeology-t2.jpg" alt="Archaeological Museum — Ticket 2" loading="lazy">
+                    <div class="ticket-label">🏛️ Archaeology — T2</div>
+                </div>
             </div>
-            <div class="ticket-card" onclick="openTicket(this)">
-                <img src="tickets/archaeology-t2.jpg" alt="Archaeological Museum — Ticket 2" loading="lazy">
-                <div class="ticket-label">🏛️ Archaeology — T2</div>
-            </div>
-        </div>
+        </details>
 
         <div class="timeline">
             <div class="tl-item">

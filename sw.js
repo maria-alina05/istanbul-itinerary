@@ -1,4 +1,4 @@
-const CACHE_NAME = 'istanbul-itinerary-v19';
+const CACHE_NAME = 'istanbul-itinerary-v20';
 const ASSETS = [
   './',
   './istanbul-itinerary.html',
