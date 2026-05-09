@@ -447,29 +447,24 @@
 
         /* ---- TICKET CARDS ---- */
         .tickets-strip {
-            display: flex; flex-wrap: wrap; gap: .5rem;
-            margin: .5rem 0 .8rem; padding: 0;
+            display: flex; gap: .6rem; overflow-x: auto; scroll-snap-type: x mandatory;
+            margin: .5rem 0 .8rem; padding: .3rem 0; -webkit-overflow-scrolling: touch;
         }
+        .tickets-strip::-webkit-scrollbar { height: 4px; }
+        .tickets-strip::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 2px; }
         .ticket-card {
-            flex: 1 1 200px; background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
-            border: 1.5px solid #facc15; border-radius: 12px;
-            padding: .6rem .8rem; position: relative; overflow: hidden;
+            flex: 0 0 auto; width: 160px; background: #1a1a1a; border: 2px solid #fbbf24;
+            border-radius: 14px; overflow: hidden; scroll-snap-align: start;
+            cursor: pointer; transition: transform .15s, box-shadow .15s;
         }
-        .ticket-card::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
-            background: #eab308; border-radius: 12px 0 0 12px;
+        .ticket-card:active { transform: scale(0.97); }
+        .ticket-card img {
+            width: 100%; height: auto; display: block;
         }
-        .ticket-card .ticket-icon { font-size: 1.1rem; margin-right: .3rem; }
-        .ticket-card .ticket-name { font-weight: 700; color: #854d0e; font-size: .82rem; }
-        .ticket-card .ticket-ref {
-            font-family: 'Courier New', monospace; font-size: .7rem; color: #a16207;
-            margin-top: .25rem; word-break: break-all;
-        }
-        .ticket-card .ticket-ref a { color: #a16207; text-decoration: underline; }
-        .ticket-label {
-            display: inline-block; background: #fbbf24; color: #78350f;
-            font-size: .65rem; font-weight: 700; padding: .1rem .4rem;
-            border-radius: 6px; margin-bottom: .3rem; letter-spacing: .3px;
+        .ticket-card .ticket-label {
+            display: block; background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #78350f; font-size: .65rem; font-weight: 700;
+            padding: .3rem .5rem; text-align: center; letter-spacing: .3px;
         }
         .tickets-summary {
             background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
@@ -481,6 +476,17 @@
         .tickets-summary th { text-align: left; padding: .3rem .4rem; color: #92400e; border-bottom: 1px solid #fbbf24; font-size: .72rem; text-transform: uppercase; }
         .tickets-summary td { padding: .35rem .4rem; border-bottom: 1px solid #fde68a; color: #78350f; }
         .tickets-summary td:last-child { font-family: 'Courier New', monospace; font-size: .7rem; }
+        /* Lightbox */
+        .ticket-lightbox {
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,.92); align-items: center; justify-content: center;
+            padding: 1rem; cursor: zoom-out;
+        }
+        .ticket-lightbox.active { display: flex; }
+        .ticket-lightbox img {
+            max-width: 100%; max-height: 90vh; border-radius: 12px;
+            box-shadow: 0 0 40px rgba(251,191,36,.3);
+        }
 
 
     </style>
@@ -689,6 +695,7 @@
                 <tr><td>May 13</td><td>Dolmabahçe Palace</td><td>GYGVN29234AB</td></tr>
                 <tr><td>May 14</td><td>Archaeological Museum</td><td>GYG6H8A9BMFW</td></tr>
             </table>
+            <p style="font-size:.72rem;color:#a16207;margin:.4rem 0 0;font-style:italic">Tap any ticket screenshot on each day to view full-size for entrance scanning.</p>
         </div>
 
         <div class="alert alert-info">
@@ -743,15 +750,21 @@
             <p>Dolmabahçe & Beylerbeyi are <strong>closed on Mondays</strong>, which is why my algorithm assigns Sultanahmet today. Topkapı opens at 9:00 — arrive at 8:45 to secure optimal positioning in the queue. Blue Mosque afternoon session opens at 14:00. I have timed every transition to the minute.</p>
         </div>
         <div class="tickets-strip">
-            <div class="ticket-card">
-                <div class="ticket-label">🎫 GYG TICKET</div>
-                <div><span class="ticket-icon">🕌</span><span class="ticket-name">Basilica Cistern + Hagia Sophia + Blue Mosque</span></div>
-                <div class="ticket-ref">Ref: GYGWZAXYKK3A</div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/cistern-t1.jpg" alt="Cistern combo — Ticket 1" loading="lazy">
+                <div class="ticket-label">🕌 Cistern+Sophia — T1</div>
             </div>
-            <div class="ticket-card">
-                <div class="ticket-label">🎫 GYG TICKET</div>
-                <div><span class="ticket-icon">👑</span><span class="ticket-name">Topkapı Palace</span></div>
-                <div class="ticket-ref">Ref: GYGX7NGV23N4</div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/cistern-t2.jpg" alt="Cistern combo — Ticket 2" loading="lazy">
+                <div class="ticket-label">🕌 Cistern+Sophia — T2</div>
+            </div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/topkapi-t1.jpg" alt="Topkapı Palace — Ticket 1" loading="lazy">
+                <div class="ticket-label">👑 Topkapı — T1</div>
+            </div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/topkapi-t2.jpg" alt="Topkapı Palace — Ticket 2" loading="lazy">
+                <div class="ticket-label">👑 Topkapı — T2</div>
             </div>
         </div>
 
@@ -1011,10 +1024,13 @@
             <p>Topkapı is <strong>closed on Tuesdays</strong> — which my algorithm exploits by scheduling the Asian side today. Beylerbeyi Palace is open. Take the ferry from Eminönü (use your Istanbulkart). We will be crossing from the European to the Asian tectonic plate. I find this geologically thrilling.</p>
         </div>
         <div class="tickets-strip">
-            <div class="ticket-card">
-                <div class="ticket-label">🎫 GYG TICKET</div>
-                <div><span class="ticket-icon">👑</span><span class="ticket-name">Beylerbeyi Palace</span></div>
-                <div class="ticket-ref">Ref: GYGWZAXYKG6M</div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/beylerbeyi-t1.jpg" alt="Beylerbeyi Palace — Ticket 1" loading="lazy">
+                <div class="ticket-label">👑 Beylerbeyi — T1</div>
+            </div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/beylerbeyi-t2.jpg" alt="Beylerbeyi Palace — Ticket 2" loading="lazy">
+                <div class="ticket-label">👑 Beylerbeyi — T2</div>
             </div>
         </div>
 
@@ -1238,10 +1254,13 @@
             <p>Dolmabahçe Palace is <strong>open today</strong> (closed Mondays only). I've timed Galata Tower for sunset (~20:00) because the photon scattering at low solar angles produces optimal atmospheric coloring. Yıldız Palace is closed on Wednesdays — another data point in the closure chaos matrix.</p>
         </div>
         <div class="tickets-strip">
-            <div class="ticket-card">
-                <div class="ticket-label">🎫 GYG TICKET</div>
-                <div><span class="ticket-icon">👑</span><span class="ticket-name">Dolmabahçe Palace</span></div>
-                <div class="ticket-ref">Ref: GYGVN29234AB</div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/dolmabahce-t1.jpg" alt="Dolmabahçe Palace — Ticket 1" loading="lazy">
+                <div class="ticket-label">👑 Dolmabahçe — T1</div>
+            </div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/dolmabahce-t2.jpg" alt="Dolmabahçe Palace — Ticket 2" loading="lazy">
+                <div class="ticket-label">👑 Dolmabahçe — T2</div>
             </div>
         </div>
 
@@ -1471,10 +1490,13 @@
             <div><h2>Markets, Archaeology & Byzantine Gems (My Second Favorite Day)</h2><div class="day-sub">Thursday, May 14 — Bazaars & Hidden Treasures</div></div>
         </div>
         <div class="tickets-strip">
-            <div class="ticket-card">
-                <div class="ticket-label">🎫 GYG TICKET</div>
-                <div><span class="ticket-icon">🏛️</span><span class="ticket-name">Archaeological Museum</span></div>
-                <div class="ticket-ref">Ref: GYG6H8A9BMFW</div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/archaeology-t1.jpg" alt="Archaeological Museum — Ticket 1" loading="lazy">
+                <div class="ticket-label">🏛️ Archaeology — T1</div>
+            </div>
+            <div class="ticket-card" onclick="openTicket(this)">
+                <img src="tickets/archaeology-t2.jpg" alt="Archaeological Museum — Ticket 2" loading="lazy">
+                <div class="ticket-label">🏛️ Archaeology — T2</div>
             </div>
         </div>
 
@@ -3109,6 +3131,20 @@ function loadFoodProgress() {
     } catch(e) {}
 }
 loadFoodProgress();
+
+// ---- TICKET LIGHTBOX ----
+(function() {
+    const lb = document.createElement('div');
+    lb.className = 'ticket-lightbox';
+    lb.innerHTML = '<img src="" alt="Ticket">';
+    lb.addEventListener('click', () => lb.classList.remove('active'));
+    document.body.appendChild(lb);
+    window.openTicket = function(card) {
+        const src = card.querySelector('img').src;
+        lb.querySelector('img').src = src;
+        lb.classList.add('active');
+    };
+})();
 </script>
 
 </body>

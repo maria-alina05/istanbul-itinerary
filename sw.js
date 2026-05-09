@@ -1,4 +1,4 @@
-const CACHE_NAME = 'istanbul-itinerary-v17';
+const CACHE_NAME = 'istanbul-itinerary-v18';
 const ASSETS = [
   './',
   './istanbul-itinerary.html',
@@ -6,7 +6,17 @@ const ASSETS = [
   './icon.svg',
   './icon-192.png',
   './icon-512.png',
-  './apple-touch-icon.png'
+  './apple-touch-icon.png',
+  './tickets/cistern-t1.jpg',
+  './tickets/cistern-t2.jpg',
+  './tickets/topkapi-t1.jpg',
+  './tickets/topkapi-t2.jpg',
+  './tickets/beylerbeyi-t1.jpg',
+  './tickets/beylerbeyi-t2.jpg',
+  './tickets/dolmabahce-t1.jpg',
+  './tickets/dolmabahce-t2.jpg',
+  './tickets/archaeology-t1.jpg',
+  './tickets/archaeology-t2.jpg'
 ];
 
 // Install: cache the single HTML page and manifest
