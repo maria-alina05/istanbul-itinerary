@@ -1,4 +1,4 @@
-const CACHE_NAME = 'istanbul-itinerary-v18';
+const CACHE_NAME = 'istanbul-itinerary-v19';
 const ASSETS = [
   './',
   './istanbul-itinerary.html',
@@ -16,7 +16,9 @@ const ASSETS = [
   './tickets/dolmabahce-t1.jpg',
   './tickets/dolmabahce-t2.jpg',
   './tickets/archaeology-t1.jpg',
-  './tickets/archaeology-t2.jpg'
+  './tickets/archaeology-t2.jpg',
+  './tickets/flight-clj-ist-andrei.jpg',
+  './tickets/flight-clj-ist-maria.jpg'
 ];
 
 // Install: cache the single HTML page and manifest
